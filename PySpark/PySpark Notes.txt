@@ -1,0 +1,203 @@
+Data can be stored in different file formats such as 
+	1. csv - comma seperated values
+			name, age, mbl_number
+			jones, 20, 9876543210
+	2. tsv - tab seperated values
+			name    age    mbl_number
+			jones    20    9876543210
+	3. json - javascript object notation (key-value pairs)
+			{
+				name: jones
+				age: 20
+				mbl_number: 9876543210
+			}
+	4. AVRO
+	5. Parquet
+		AVRO and Parquet are compressed version file format based on snappy technology
+
+When we are receiving data from different sources in different file formats, in order to process the data, we require that the whole data should be in one format. In order to do that, we use Spark. This process is converting different file formats data into a single file format is called as Transformation.
+The main purpose behind the processing of data is to gain insights from the data which helps in decision making.
+Data is also necessary for operational proficiency.
+
+Data is classified as 
+	1. Structured - realtional database data, 
+	2. Semi Structured - key-value databases, graphs, tables, csv files
+	3. Unstructured - photos
+
+Big Data - collection of structured, semi structured and unstructured data that grows exponentially over time. 
+Big data can't fit in one server for processing as it is very big in size than the processors memory.
+So, we use multiple severs which acts as a single cluster to process the big data.
+Traditional file systems such as text files are not designed to run on multiple servers.
+In order to process the big data on nultiple servers, we need to distribute the data to multiple servers by using a framework called as Hadoop which provides HDFS(Hadoop Distributed File System). HDFS defines how the big data should be distrubued among multiple servers. To process the data, we use MapReduce programs. Generally, MapReduce programs are written in  only Java. As, Java is more developer dependent language, later MapReduce is replaced by another farmework called Spark.
+In short, 
+	HDFS - Storage
+	Spark - Process
+Spark can be implemented by multiple languages:
+	1. Python (PySpark)
+	2. SQL (SqSpark)
+	3. R (RSaprk)
+Spark is also called as ETL (Extract, Transform and Load) tool, which is making the data ready for analysis.
+	- cleaning the data
+	- data ready for analysis
+	
+Spark, an open source software, which is managed by a foundation called as Apache.
+Spark is a 
+	general purpose 
+	in-memory 
+	compute engine.
+	
+Hadoop provides 
+	HDFS - storage, 
+	MapReduce - computation i.e., processing using some code written in Java, 
+	YARN (Yet Another Resource Manager) - manages the resources i.e., resource management
+
+In Hadoop, Spark is used as replacement for MapReduce. Spark is a Plug & Play Compute Engine i.e., it can be connected with any storage system (local storage, HDFS, Amazon S3) and with any resource manager (yarn, mesos, kubernetes).
+
+Architecture of Spark Cluster
+			Spark Cluster
+	Compute 			Spark
+	Storage 			Local/HDFS/Amazon S3
+	Resource Manager	YARN/MESOS/KUBERNETES
+	
+Current Industy Trend
+	Compute 			Spark
+	Storage 			HDFS
+	Resource Manager	YARN
+	
+Spark computes data in-memory. Spark is 10 to 100 times faster than the MapReduce.
+	
+	MapReduce Processing
+		Map + Reduce
+		Disk Read --Map--> Disk Write
+		Disk Read --Reduce--> Disk Write
+		
+		For each MapReduce operation, read and write operations will takes place twice.
+		If a job has 10 iterations, 20(10 read and 10 write operations) read-write operations will takes place.
+		
+	Spark Processing
+		Disk Read --Process--> Disk Write
+		
+		Irrespective of number of operations, read and write operations will takes place only once.
+		If a job has 10 iterations, 2(one read and one write) read-write operations will takes place.
+		
+Spark provides low latency beacuse of lesser read and write operations, hence faster.
+Spark is general purpose engine because it is suitable for a wide range of activities such as:
+	1. data cleaning - pig
+	2. sql/structure data - hive
+	3. machine learning - mahout
+	4. streaming data - storm
+	
+	pig, hive, mahout, storm are different libraries that are used with spark to acquire the respective operation.
+	
+The basic unit which holds the data in Spark is called as RDD (resilient distrubuted dataset).
+In order to perform Spark operations, the data must be  either RDD's or DataFrames.
+In Spark, there are two kinds of operations:
+	1. Transformations
+	2. Actions
+	
+	Modifying the data is called as transformation
+	Action displays the output
+	
+	Transformations are lazy but actions are not
+	
+	Transformations will be done only on the data based on the action operation, that's why it is lazy.
+	
+	Every time a spark statement is executed, an entry will be made to a digaram which is created in the backend. The diagram is tehnically called as DAG (Directed Acyclic Graph). It will be created when we compute spark statements.
+	Execution happens only when Action is encountered before that only entries are made into DAG.
+	
+
+What is an RDD?
+- RDD, or Resilient Distributed Dataset, is a fundamental data structure in Spark.
+- It represents an immutable distributed collection of objects that can be processed in parallel.
+- RDDs are fault-tolerant, meaning they can be rebuilt if a node fails, which makes them resilient.
+- They can be created by parallelizing an existing collection or by loading data from external storage systems like HDFS, Cassandra, etc.
+- As RDD are immutable, we are required to create a new RDD for every transformation.
+
+RDD's are stored in big data clusters. 
+RDD's are boken dowm into multiple segments or blocks and each block will be stored in multiple servers. Thus it helps in recovering data even a server fails. 
+Each block will be processed by a server, thus making it faster. The default block size is 128MB.
+
+Each file is wroken down into blocks and will be stored in HDFS (disk). When a RDD is created using that block, it will be moved to RAM for further processing.
+		Blocks - distributed across Disk (HDFS)
+		RDDs - distributed across Memory (RAM)
+
+RDDs are resilient since RDDs can be recvered if there is any Failure through Lineage Graph. A lineage graph keeps a track of tranformations to be executed after an action has been called.
+
+In HDFS, resiliency is acheived by using replication factor.
+In RDDs, resiliency is achieved using linage graph.
+Immutability and Lineage Graphs provide Resiliency in RDDs.
+
+Transformations create a new RDD from an existing one. Here are some common transformations:
+	- map(func): Returns a new RDD by applying a function to each element of the RDD.
+		The map(func) transformation in PySpark is a fundamental operation that allows you to apply a function to each element in an RDD. The function specified by func is applied to each element, and the result is a new RDD where each element is the result of applying the function to the original elements.
+		
+	- filter(func): Returns a new RDD containing only the elements that satisfy a predicate.
+		What is filter(func)?
+			The filter(func) function returns a new RDD by selecting only those elements of the source on which the function func returns True.
+			It's similar to the standard filter() function in Python but is designed to work on distributed data.
+		How does filter(func) work?
+			It takes a function func that evaluates to a boolean value.
+			This function is applied to each element of the RDD.
+			If func returns True, the element is included in the resulting RDD; if False, it is excluded
+			
+	- flatMap(func): Similar to map, but each input item can be mapped to 0 or more output items.
+		The flatMap(func) transformation in PySpark is indeed similar to map(func), but with a key difference: it can produce zero, one, or more output items for each input item. This makes flatMap particularly useful when you have operations that might result in an RDD with a different number of elements than the original.
+		Difference between map and flatMap is -
+			in map, for each input, there must be only one output but
+			in flatMap, for each input, there can be zero or one or multiple outputs.
+			
+	- union(otherRDD): Returns a new RDD containing all elements from the source RDD and another RDD.
+	
+	- intersection(otherRDD): Returns a new RDD containing only elements found in both source and another RDD.
+	
+	- distinct(): Returns a new RDD containing distinct elements from the source RDD.
+		What does distinct() do?
+			The distinct() method removes duplicate elements from an RDD.
+			When applied, it evaluates the unique values present and returns a new RDD containing only the distinct elements.
+			It's important to note that this operation considers the entire element. For example, in an RDD of tuples, the tuple as a whole is considered for uniqueness, not just the keys or values.
+	
+	- groupByKey(): Groups the values for each key in the RDD into a single sequence.
+		In PySpark, the groupByKey() transformation is used to group all the values associated with each key in the RDD into a single sequence. This can be particularly useful when you want to perform aggregations or other operations on grouped data.
+	
+	- groupBy():
+		What is groupBy()?
+			The groupBy() function groups the elements of an RDD based on the result of a function.
+			It returns an RDD of grouped items, where each group consists of a key and a sequence of elements that match that key.
+		How does groupBy() work?
+			You provide a function that computes a key for each element.
+			The RDD is then grouped by those keys.
+			The result is an RDD where each element is a tuple with the key and an iterable of all the elements that correspond to that key.
+			
+	- reduceByKey(func): Merges the values for each key using an associative reduce function.
+		The reduceByKey() transformation in PySpark is a powerful operation used to aggregate values by key using a specified reduce function. It is particularly useful for large-scale data processing where you need to perform aggregations efficiently in a distributed environment.
+		reduceByKey() operates on pair RDDs, which are RDDs consisting of key-value pairs. The transformation merges the values for each key using an associative and commutative reduce function. This means the function can be applied in any order and still produce the same results.
+		The transformation works by first grouping values by key and then applying the reduce function on each group, merging the values within each group to produce a single value per key in the result RDD.
+		
+	- sortByKey(): Returns an RDD sorted by the key.
+		sortByKey() is a transformation operation in PySpark that sorts the elements of an RDD.
+		It assumes that each element in the RDD is a (key, value) pair.
+		The method sorts the elements based on the keys, either in ascending or descending order.
+		How does sortByKey() work?
+			By default, sortByKey() sorts the elements in ascending order, but you can pass a parameter to sort in descending order.
+			You can also specify the number of partitions to use for sorting.
+			Optionally, a custom key function can be provided to compute a sort key for each element.
+			
+	- aggregateByKey():
+		The aggregateByKey() transformation in PySpark is a versatile and powerful operation used for aggregating values of each key in a pair RDD. It allows you to perform complex aggregations and can return a result that is a different type than the input value type.
+		How aggregateByKey() Works: aggregateByKey() takes three arguments:
+			zeroValue: The initial value for each key’s aggregated data. This is a kind of “identity value” for the aggregation function.
+			seqFunc: A function that combines the values within a partition. It takes two parameters: an accumulator (of the same type as the zero value) and a new element from the RDD, returning an updated accumulator.
+			combFunc: A function that combines the outputs of the seqFunc across different partitions. It takes two accumulators as parameters and returns a single combined accumulator.
+		
+	- count():
+		The count() method returns the total number of elements in an RDD.
+		It's a transformation operation that triggers the evaluation of the RDD.
+
+	- countByKey():
+		The countByKey() method is used on RDDs containing key-value pairs (usually tuples).
+		It counts the number of occurrences for each unique key and returns the result as a dictionary.
+
+	- countByValue():
+		The countByValue() method counts the occurrences of each unique value in the RDD.
+		It returns a dictionary with value-count pairs.
+
