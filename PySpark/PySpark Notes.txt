@@ -153,7 +153,7 @@ Transformations create a new RDD from an existing one. Here are some common tran
 	- distinct(): Returns a new RDD containing distinct elements from the source RDD.
 		What does distinct() do?
 			The distinct() method removes duplicate elements from an RDD.
-			When applied, it evaluates the unique values present and returns a new RDD containing only the distinct elements.
+			When applied, it evaluates the unique values present and returns a new RDD cont aining only the distinct elements.
 			It's important to note that this operation considers the entire element. For example, in an RDD of tuples, the tuple as a whole is considered for uniqueness, not just the keys or values.
 	
 	- groupByKey(): Groups the values for each key in the RDD into a single sequence.
@@ -201,3 +201,6 @@ Transformations create a new RDD from an existing one. Here are some common tran
 		The countByValue() method counts the occurrences of each unique value in the RDD.
 		It returns a dictionary with value-count pairs.
 
+
+sc.textFile("...") is used to create a rdd from the data available in a file
+sc - SparkContext is the entry point for any Spark functionality. It represents the connection to a Spark cluster and can be used to create RDDs (Resilient Distributed Datasets), accumulators, and broadcast variables on that cluster.
