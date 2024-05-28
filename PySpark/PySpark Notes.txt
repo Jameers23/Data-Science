@@ -204,3 +204,35 @@ Transformations create a new RDD from an existing one. Here are some common tran
 
 sc.textFile("...") is used to create a rdd from the data available in a file
 sc - SparkContext is the entry point for any Spark functionality. It represents the connection to a Spark cluster and can be used to create RDDs (Resilient Distributed Datasets), accumulators, and broadcast variables on that cluster.
+
+
+DataFrame - contains rows and columns
+			built on top of spark RDD's
+			
+	Key Characteristics:
+		1. Schema
+		2. Distributed Processing 
+		3. Optimized
+		4. Ease of Use
+		5. Interoperability
+		
+	Uses:
+		1. Data Exploration and Analysis
+			- loading data
+			- descriptive statistics
+			- visualizing data
+		2. Data Transformation and Cleaning
+			- Filtering and Selecting Data
+			- Column Operations
+			- Handling Missing Data
+		3. Data Integration
+			- joins
+			- unions
+			- merges
+		4. Complex Querying
+			- sql queries
+			- aggregations
+		5. Interoperability with ML
+			- Mlib Integration
+			- Feature Engineering
+		
