@@ -1,0 +1,114 @@
+Artificial Intelligence - making computers to think themselves and take a decision
+Artificial General Intelligence (AGI) - making machines as intellent as we are
+
+Machine Learing - it is a sub-field of AI, making computers to learn without being explicitly programmed
+	Field of study that gives computers the ability to learn without being explicitly programmed.
+	
+Applications - 
+	1. hospitals to cure diseases
+	2. computer vision for object detection
+	3. in factories, to identify the defect products
+	4. voice to text conversion
+	5. search engines to rank the webpages
+	6. recommendation systems in netflix, amazon etc.
+	7. email spam and ham classification
+	
+Machine Learning Algorithms are of mainly two types:
+	1. Supervised Learning
+	2. Unsupervised Learning
+	
+Supervised Learning: Labelled Data
+	input --> outputs
+	learns from data labeled with right answers
+	trains the algorithm by giving the right answers for inputs
+	Eg:
+		- spam filtering
+		- speech recognition
+		- language translation
+		- online advertising
+		- online advertising
+		- self-driving car
+		- visual inspection 
+	
+	Regression:
+		Predict a number from infinitely many possible outputs
+		
+	Classification: 
+		predicts categories from limited and finite set of categories
+		
+Unsupervised Learning: Unlabelled Data
+		data only comes with inputs, but not with outputs
+		algorithm has to find structure in the data.
+	1. Clustering: collection of group of the data similar in structure
+		group similar data points together
+		Application: Google News
+	2. Anomaly Detection: find unsual data points
+		Eg: Fraud detection
+	3. Dimensionality Reduction: compress data using fewer numbers
+	
+Terminology:
+	training data - data used to train the model, d
+		notation-
+			'x' (input variable or feature variable) 
+			'y' (output or target variable)
+			'm' (number of training examples)
+	
+	
+Linear Regression:
+	supervised regression algorithm
+	supervised since the labelled data will be fed to the model
+	regression is due to it predicts the numbers
+		
+		training data --> learning algorithm --> f (function/model) --> y^ (y-hat) (estimated value for the input x)
+		
+			f(x) = wx+b    i.e., w,b are parameters (or coefficients or weights)
+			b is called as y-intercept
+			w is slope
+			
+			linear is nothing but a straight line
+			
+			linear regression with one variable is univariate linear regression 
+									two variables is bivariate
+									multiple variables is mutli-variate
+									
+			cost function: squared error cost function
+				J = (1/2m)sigma(y^ - y)2
+									
+									
+		model: fw,b(x) = wx+b
+		parameters: w,b
+		cost function: 
+			J(w,b) = (1/2m)sigma(y^ - y)2
+			J(w,b) = (1/2m)sigma(fw,b(x) - y)2
+		goal: minimize J(w,b)
+		
+		simplified:
+			model: f(x) = wx (b=0)
+		parameters: w
+		cost function: 
+			J(w) = (1/2m)sigma(y^ - y)2
+			J(w) = (1/2m)sigma(fw(x) - y)2
+		goal: minimize J(w)
+		
+		the algorithm that is used to find the minimum cost function is gardient descent
+		
+		have some function J(w,b)
+		want min J(w,b)
+		
+		Outline:
+			start with some w, b (set w=0, b=0 as initial guess)
+			keep changing w,b to reduce J until we settle at or near a minimum
+			
+		w = w - (alpha) d/dw J(w,b)
+			alpha is learning rate (lies between 0 and 1)
+			
+			d/dw J(w,b) is derivate of cost function
+		
+		b = b - (alpha) d/db J(w,b)
+		
+		if alpha is too small then gradient descent may be slow
+		
+		if alpha is too large then the gradient may 
+			- overshoot, never reach minimum
+			- fail to converge, diverge
+	
