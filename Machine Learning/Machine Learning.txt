@@ -13,6 +13,31 @@ Applications -
 	6. recommendation systems in netflix, amazon etc.
 	7. email spam and ham classification
 	
+Major Machine Learning Techniques:
+	1. Regression or Estimation: Predicting continuous values
+	2. Classification: Predicting the item class/category of a case
+	3. Clustering: Finding the structure of data; summaization
+	4. Associations: Associating frequent co-occurring items/events
+	5. Anomaly Detection: Discovering abnormal and unusual cases
+	6. Sequence Mining: Predicting next events
+	7. Dimension Reduction: Reducing the size of data
+	8. Recommendation Systems: Recommending items
+	
+Difference AI, ML and DL:
+	AI - tries to make computers intelligent to mimic the cognitive functions of humans.
+		Eg: Computer Vision, Language Processing, Creativity etc
+	ML - branch of AI that covers the statistical part of AI, it teaches the computer to solve problems by looking at 100's or 1000's of examples, using the experience to solve the next examples
+		Eg: Classification, Regression, Clustering etc
+	DL: field of ML where computers can learn and make intelligent decisions on their own. 
+		Eg: Object Detection, Neural Networks etc
+	
+Python Libraries to be used:
+	1. NumPy: used to work with n-dimensional arrays, enables to do compution effeciently and effectively.
+	2. SciPy - collection of numerical algorithms
+	3. Matplotlib - used for visualizing data
+	4. Pandas - used for high dimensional datastructures such as DataFrames
+	5. Scikit -learn - provides ML algorithms
+
 Machine Learning Algorithms are of mainly two types:
 	1. Supervised Learning
 	2. Unsupervised Learning
@@ -32,6 +57,7 @@ Supervised Learning: Labelled Data
 	
 	Regression:
 		Predict a number from infinitely many possible outputs
+		process of predicting comtinuous variables
 		
 	Classification: 
 		predicts categories from limited and finite set of categories
@@ -45,6 +71,8 @@ Unsupervised Learning: Unlabelled Data
 	2. Anomaly Detection: find unsual data points
 		Eg: Fraud detection
 	3. Dimensionality Reduction: compress data using fewer numbers
+	4. Market Basket Analysis
+	5. Density Estimation
 	
 Terminology:
 	training data - data used to train the model, d
@@ -111,4 +139,6 @@ Linear Regression:
 		if alpha is too large then the gradient may 
 			- overshoot, never reach minimum
 			- fail to converge, diverge
+	
+Feature Engineering: Using inituition to design new features, by transforming or combining original features.
 	
