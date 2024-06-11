@@ -117,14 +117,14 @@ RDD's are stored in big data clusters.
 RDD's are boken dowm into multiple segments or blocks and each block will be stored in multiple servers. Thus it helps in recovering data even a server fails. 
 Each block will be processed by a server, thus making it faster. The default block size is 128MB.
 
-Each file is wroken down into blocks and will be stored in HDFS (disk). When a RDD is created using that block, it will be moved to RAM for further processing.
+Each file is broken down into blocks and will be stored in HDFS (disk). When a RDD is created using that block, it will be moved to RAM for further processing.
 		Blocks - distributed across Disk (HDFS)
 		RDDs - distributed across Memory (RAM)
 
 RDDs are resilient since RDDs can be recvered if there is any Failure through Lineage Graph. A lineage graph keeps a track of tranformations to be executed after an action has been called.
 
 In HDFS, resiliency is acheived by using replication factor.
-In RDDs, resiliency is achieved using linage graph.
+In RDDs, resiliency is achieved using lineage graph.
 Immutability and Lineage Graphs provide Resiliency in RDDs.
 
 Transformations create a new RDD from an existing one. Here are some common transformations:
