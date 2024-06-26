@@ -51,13 +51,12 @@ Supervised Learning: Labelled Data
 		- speech recognition
 		- language translation
 		- online advertising
-		- online advertising
 		- self-driving car
 		- visual inspection 
 	
 	Regression:
 		Predict a number from infinitely many possible outputs
-		process of predicting comtinuous variables
+		process of predicting continuous variables
 		
 	Classification: 
 		predicts categories from limited and finite set of categories
@@ -141,4 +140,19 @@ Linear Regression:
 			- fail to converge, diverge
 	
 Feature Engineering: Using inituition to design new features, by transforming or combining original features.
+
+2 ways to evaluate a model:
+	1. Test on a portion of training data
+		- trained on full dataset
+		- testing will takes place by taking a portion of training data 
+		- high training accuracy
+		- low out-of-sample accuracy
+		
+		low out-of-sample accuracy can be improved by using the next method
+	
+	2. train test split
+		- whole dataset will be made 2 parts - 70% for training and 30% for testing
+		- training data will be used to train the model
+		- testing data will be used to test the trained model
+		- test data contains new data, so the model makes predictions on new data, which results in high out-of-sample accuracy
 	

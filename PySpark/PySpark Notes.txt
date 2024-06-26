@@ -236,3 +236,11 @@ DataFrame - contains rows and columns
 			- Mlib Integration
 			- Feature Engineering
 		
+		
+Spark Architecture
+
+	Driver				-----> Cluster Manager ----> Working Nodes
+		Spark Context									Executors	
+															Tasks
+																Cache
+																
